@@ -1,24 +1,35 @@
 import 'package:announcements/dummy_announcements.dart';
+import 'package:announcements/oydabase_package/oydadb.dart';
 import 'package:announcements/views/all_announcements.dart';
 import 'package:announcements/views/view_announcement.dart';
 // import 'package:announcements/widgets/announcement.dart';
 // import 'package:announcements/widgets/appbar.dart';
 // import 'package:announcements/create_announcement.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyDh8srTX-HKeXP8HN5jeTM6pv6J9A-S0jk",
-        authDomain: "flutterfusion-553db.firebaseapp.com",
-        projectId: "flutterfusion-553db",
-        storageBucket: "flutterfusion-553db.appspot.com",
-        messagingSenderId: "772946002661",
-        appId: "1:772946002661:web:c850926aa8179f43770a0c",
-        measurementId: "G-WYVTGG8SWW"),
-  );
+
+  String oydabaseName = 'announcements';
+  String host = 'localhost';
+  int port = 5453;
+  String username = 'postgres';
+  String password = 'okad';
+  bool useSSL = false;
+  String devKey = "77775432";
+
+  final oydaInterface = OYDAInterface();
+  await oydaInterface.setOydaBase(devKey, oydabaseName, host, port, username, password, useSSL);
+
+  final columns = {
+    'id': 'SERIAL PRIMARY KEY',
+    'title': 'VARCHAR(255) NOT NULL',
+    'content': 'TEXT NOT NULL',
+    'posted_date': 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
+  };
+  await oydaInterface.createTable('announcements', columns);
+
   runApp(const MyApp());
 }
 
