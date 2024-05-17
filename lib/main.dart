@@ -1,7 +1,7 @@
 import 'package:announcements/dummy_announcements.dart';
-import 'package:announcements/oydabase_package/oydadb.dart';
 import 'package:announcements/views/all_announcements.dart';
 import 'package:announcements/views/view_announcement.dart';
+import 'package:announcements/oydadb_package/src/oyda_interface.dart';
 // import 'package:announcements/widgets/announcement.dart';
 // import 'package:announcements/widgets/appbar.dart';
 // import 'package:announcements/create_announcement.dart';
@@ -11,24 +11,24 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  String oydabaseName = 'announcements';
-  String host = 'localhost';
-  int port = 5453;
-  String username = 'postgres';
-  String password = 'okad';
-  bool useSSL = false;
-  String devKey = "77775432";
+  // String host = 'oydaserver.postgres.database.azure.com';
+  // String oydabaseName = 'announcements'; 
+  // String username = 'oydaadmin';
+  // String password = 'OhenebaOmar123';
+  // String devKey = "77775432";
+  // bool useSSL = true;
+  // int port = 5432;
 
-  final oydaInterface = OYDAInterface();
-  await oydaInterface.setOydaBase(devKey, oydabaseName, host, port, username, password, useSSL);
+  // final oydaInterface = OYDAInterface();
+  // await oydaInterface.setOydaBase(devKey, oydabaseName, host, port, username, password, useSSL);
 
-  final columns = {
-    'id': 'SERIAL PRIMARY KEY',
-    'title': 'VARCHAR(255) NOT NULL',
-    'content': 'TEXT NOT NULL',
-    'posted_date': 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
-  };
-  await oydaInterface.createTable('announcements', columns);
+  // final columns = {
+  //   'id': 'SERIAL PRIMARY KEY',
+  //   'title': 'VARCHAR(255) NOT NULL',
+  //   'content': 'TEXT NOT NULL',
+  //   'posted_date': 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
+  // };
+  // await oydaInterface.createTable('announcements', columns);
 
   runApp(const MyApp());
 }
