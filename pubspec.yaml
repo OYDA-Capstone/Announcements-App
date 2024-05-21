@@ -30,7 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  postgres: ^2.6.4
+  # postgres: ^2.6.4
+  oydadb: ^0.0.2
+  intl: ^0.18.0
 
 
   # The following adds the Cupertino Icons font to your application.
