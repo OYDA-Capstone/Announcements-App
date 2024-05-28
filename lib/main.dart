@@ -19,8 +19,8 @@ void main() async {
 
   final oydaInterface = OYDAInterface();
   await oydaInterface.setOydaBase(devKey, oydabaseName, host, port, username, password, useSSL);
-  // final data = await oydaInterface.selectTable('announcements');
-  // print(data);
+  final data = await oydaInterface.selectTable('announcements');
+  print(data);
 
   runApp(const MyApp());
 }
@@ -31,20 +31,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // final List<Announcement> announcements = [
-    //   const Announcement(
-    //       title: "ML Tutorial Session",
-    //       content: "Hello all, If you are interested in the tutorial session, sign up using the link...",
-    //       postedDate: "15 Feb 2024, 00:31"),
-    //   const Announcement(
-    //       title: "Flutter Workshop",
-    //       content: "Hello all, If you are interested in the workshop, sign up using the link...",
-    //       postedDate: "15 Feb 2024, 00:31"),
-    //   const Announcement(
-    //       title: "Dart Tutorial Session",
-    //       content: "Hello all, If you are interested in the tutorial session, sign up using the link...",
-    //       postedDate: "15 Feb 2024, 00:31"),
-    // ];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Announcements App',
@@ -56,8 +42,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// AnnouncementWidget(
-//         title: announcements[0].title,
-//         content: announcements[0].content,
-//         postedDate: announcements[0].postedDate,
-//         )
